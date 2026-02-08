@@ -1,4 +1,11 @@
 // script.js
+function sayHi(option) {
+    if (option == 'hi'){
+        document.getElementById('hello').style.display = 'none'; // Hide the question
+        document.getElementById('say-hi').style.display = 'none'; // Hide the question
+        displayCatFlower();
+    }
+}
 
 // Function to handle button click events
 function selectOption(option) {
@@ -49,12 +56,36 @@ function displayCat() {
     // Create a new Image element for the cat
     var catImage = new Image();
     // Set the source (file path) for the cat image
-    catImage.src = 'cat_flower.gif'; // Assuming the cat image is named "cat_flower.gif"
+    catImage.src = 'cat.gif'; // Assuming the cat image is named "cat_flower.gif"
     // Set alternative text for the image (for accessibility)
     catImage.alt = 'Cat';
     // When the cat image is fully loaded, add it to the image container
     catImage.onload = function() {
         imageContainer.appendChild(catImage);
+        // Hide the options container
+        document.getElementById('question').style.display = 'none'; // Hide the question
+        document.getElementById('options').style.display = 'none';
+    };
+}
+
+// Function to display the cat_kiss.gif
+function displayCatFlower() {
+    // Clear existing content in the image container
+    document.getElementById('image-container').innerHTML = '';
+    // Get the container where the image will be displayed
+    var imageContainer = document.getElementById('image-container');
+    // Create a new Image element for the cat_kiss
+    var catKissImage = new Image();
+    // Set the source (file path) for the cat_kiss image
+    catKissImage.src = 'cat_flower.gif'; // Assuming the cat_kiss image is named "cat_kiss.gif"
+    // Set alternative text for the image (for accessibility)
+    catKissImage.alt = 'Cat Flower';
+    // When the cat_kiss image is fully loaded, add it to the image container
+    catKissImage.onload = function() {
+        imageContainer.appendChild(catKissImage);
+        // Show the options container
+        document.getElementById('question').style.display = 'block'; // Hide the question
+        document.getElementById('options').style.display = 'block';
     };
 }
 
@@ -77,6 +108,7 @@ function displayCatKiss() {
         document.getElementById('options').style.display = 'none';
     };
 }
+
 function playNoEffect() {
     // Play audio
     var audio = new Audio('FAH.mp3');
