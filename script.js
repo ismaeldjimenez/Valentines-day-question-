@@ -10,14 +10,16 @@ function selectOption(option) {
             displayCatKiss(); // Display the cat_kiss.gif
         });
     } else if (option === 'no') {
-        // Change text on the "No" button to "You sure?"
+        playNoEffect(); // 💥 NEW EFFECT
+    
         document.getElementById('no-button').innerText = 'You sure?'; 
-        // Increase font size of "Yes" button
+    
         var yesButton = document.getElementById('yes-button');
         var currentFontSize = window.getComputedStyle(yesButton).getPropertyValue('font-size');
-        var newSize = parseFloat(currentFontSize) * 2; // Increase font size by  * 2px
+        var newSize = parseFloat(currentFontSize) * 2;
         yesButton.style.fontSize = newSize + 'px';
-    } else {
+    }
+    else {
         // If neither "Yes" nor "No" was clicked, show an alert message
         alert('Invalid option!');
     }
@@ -75,6 +77,29 @@ function displayCatKiss() {
         document.getElementById('options').style.display = 'none';
     };
 }
+function playNoEffect() {
+    // Play audio
+    var audio = new Audio('FAH.mp3');
+    audio.play();
 
-// Display the cat.jpg initially
+    // Create explosion image
+    var explosion = document.createElement('img');
+    explosion.src = 'cat_explosion.gif';
+    explosion.className = 'explosion';
+    explosion.alt = 'Explosion Cat';
+
+    document.body.appendChild(explosion);
+
+    // After 1 second, fade it out
+    setTimeout(function () {
+        explosion.classList.add('fade-out');
+    }, 1000);
+
+    // Remove from DOM after fade
+    setTimeout(function () {
+        explosion.remove();
+    }, 1500);
+}
+
+// Display the cat.gif initially
 displayCat();
