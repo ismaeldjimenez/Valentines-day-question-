@@ -84,7 +84,7 @@ function displayCatFlower() {
     catKissImage.onload = function() {
         imageContainer.appendChild(catKissImage);
         // Show the options container
-        document.getElementById('question').style.display = 'block'; // Hide the question
+        document.getElementById('question').style.display = 'block';
         document.getElementById('options').style.display = 'block';
     };
 }
